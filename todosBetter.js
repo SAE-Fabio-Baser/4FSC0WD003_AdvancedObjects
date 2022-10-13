@@ -28,6 +28,6 @@ button.addEventListener("click", addTodo)
 
 input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-        addTodo(input.value)
+        addTodo()
     }
 })
