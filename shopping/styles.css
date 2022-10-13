@@ -1,0 +1,9 @@
+.inventory li {
+    cursor: pointer;
+}
+
+span {
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 120%;
+}

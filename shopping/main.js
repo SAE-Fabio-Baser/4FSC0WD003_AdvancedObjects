@@ -5,6 +5,10 @@ import createElement from "./functions/createElement.js";
 const inventoryList = document.querySelector("#inventory")
 const cartList = document.querySelector("#cart")
 
+/**
+ * Inventory of Product
+ * @type { {name: string, price: number}[] }
+ */
 const inventory = [
     {
         name: "Cornflakes",
@@ -16,6 +20,10 @@ const inventory = [
     }
 ]
 
+/**
+ * Renders Inventory Products
+ * @param product {{name: string, price: number}}
+ */
 function renderProduct(product) {
 
     const listItem = createElement(inventoryList, "li", product.name)
@@ -35,6 +43,11 @@ const warenkorb = []
 
 inventory.forEach(renderProduct)
 
+/**
+ * Renders Items in Cart
+ * @param product {{name: string, price: number, amount: number}} Product
+ * @param productIndex {number} Index of Product in Cart
+ */
 function renderCartItem(product, productIndex) {
 
     const listItem = createElement(cartList, "li", product.name)
@@ -54,11 +67,12 @@ function renderCartItem(product, productIndex) {
         })
 }
 
+/**
+ * Renders CartList with Cart-Items
+ */
 function render() {
 
     cartList.innerHTML = ""
     warenkorb.forEach(renderCartItem)
 
 }
-
-console.log(warenkorb)

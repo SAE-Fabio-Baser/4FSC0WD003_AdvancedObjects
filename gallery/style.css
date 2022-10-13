@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    flex-grow: 1;
+    display: grid;
+    background: #262626;
+
+    padding: 10px;
+    gap: 10px;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.miniature {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
