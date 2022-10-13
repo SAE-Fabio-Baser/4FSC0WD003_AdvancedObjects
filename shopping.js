@@ -1,4 +1,9 @@
-import cart from "./functions"
+import addToCart from "./functions/addToCart.js";
+import removeFromCart from "./functions/removeFromCart.js";
+import createElement from "./functions/createElement.js";
+
+const inventoryList = document.querySelector("#inventory")
+const cartList = document.querySelector("#cart")
 
 const inventory = [
     {
@@ -11,12 +16,49 @@ const inventory = [
     }
 ]
 
+function renderProduct(product) {
+
+    const listItem = createElement(inventoryList, "li", product.name)
+    createElement(listItem, "span", product.price + "€")
+
+    listItem.addEventListener("click", function () {
+        addToCart(warenkorb, product)
+        render()
+    })
+}
+
+/**
+ * Warenkorb
+ * @type {{name: string, price: number, amount: number}[]}
+ */
 const warenkorb = []
 
-cart.add(warenkorb, inventory[0])
-cart.add(warenkorb, inventory[0], 10)
-cart.add(warenkorb, inventory[0])
+inventory.forEach(renderProduct)
 
-cart.remove(warenkorb, 0, 10)
+function renderCartItem(product, productIndex) {
+
+    const listItem = createElement(cartList, "li", product.name)
+    createElement(listItem, "span", product.price + "€")
+    createElement(listItem, "span", product.amount)
+
+    createElement(listItem, "button", "-")
+        .addEventListener("click", function () {
+            removeFromCart(warenkorb, productIndex)
+            render()
+        })
+
+    createElement(listItem, "button", "+")
+        .addEventListener("click", function () {
+            addToCart(warenkorb, product)
+            render()
+        })
+}
+
+function render() {
+
+    cartList.innerHTML = ""
+    warenkorb.forEach(renderCartItem)
+
+}
 
 console.log(warenkorb)
